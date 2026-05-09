@@ -33,11 +33,10 @@ export function Hero() {
       </video>
 
       {/* Fixed Navigation with Scroll State */}
-      <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 py-4 ${
-        scrolled 
-        ? "bg-black/90 backdrop-blur-md border-b border-white/5 shadow-2xl" 
+      <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 py-4 ${scrolled
+        ? "bg-black/90 backdrop-blur-md border-b border-white/5 shadow-2xl"
         : "bg-transparent border-transparent"
-      }`}>
+        }`}>
         <div className="max-w-7xl mx-auto">
           <Navbar />
         </div>
@@ -92,7 +91,7 @@ export function Hero() {
               initial={{ opacity: 0, filter: 'blur(10px)', scale: 0.95 }}
               animate={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
-              className="text-white font-black tracking-tighter leading-[0.85] text-6xl sm:text-7xl md:text-8xl lg:text-9xl m-0 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+              className="text-white font-normal tracking-tight leading-[0.85] text-6xl sm:text-7xl md:text-8xl lg:text-9xl m-0 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]"
             >
               LATIO AI
             </motion.h1>
@@ -104,7 +103,7 @@ export function Hero() {
             >
               <ShinyText
                 text="Marketing Agency"
-                className="tracking-tighter leading-tight text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mt-2 sm:mt-4 lg:mt-6 py-4 px-2"
+                className="tracking-tight leading-tight text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mt-2 sm:mt-4 lg:mt-6 py-4 px-2"
               />
             </motion.div>
           </div>

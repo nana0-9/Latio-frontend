@@ -410,62 +410,105 @@ function PartnerGrid() {
     return acc;
   }, {});
 
-  // Sort sectors to put "Làm đẹp" first
+  // Sort sectors based on user's preferred order
+  const desiredOrder = [
+    "Nhà hàng - F&B",
+    "Nội thất",
+    "SPA & Beauty",
+    "Trường học",
+    "Khác",
+    "Sức khỏe",
+    "Mẹ & Bé"
+  ];
+
   const sortedSectors = Object.entries(groupedPartners).sort(([a], [b]) => {
-    if (a === "Làm đẹp") return -1;
-    if (b === "Làm đẹp") return 1;
+    const indexA = desiredOrder.indexOf(a);
+    const indexB = desiredOrder.indexOf(b);
+
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
     return a.localeCompare(b);
   });
 
   return (
-    <div className="flex flex-col gap-2 relative z-10">
-      {sortedSectors.map(([sector, sectorPartners]: [string, any[]], sIdx) => (
-        <div key={sector} className="flex flex-col gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/5 border border-blue-500/20 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(234,88,12,0.1)]">
-              <Briefcase className="text-blue-500 w-6 h-6" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[9px] font-black text-blue-500/60 uppercase tracking-[0.4em] mb-0.5">Classification</span>
-              <h3 className="text-xl md:text-3xl font-black text-white uppercase tracking-tight leading-none">
-                {sector}
-              </h3>
-            </div>
-            <div className="h-px flex-1 bg-gradient-to-r from-blue-500/20 to-transparent ml-4 mt-3"></div>
-          </div>
+    <div className="flex flex-col gap-12 relative z-10">
+      {sortedSectors.map(([sector, sectorPartners]: [string, any[]]) => {
+        // Only use marquee if there are more than 3 logos
+        const isMarquee = sectorPartners.length > 3;
 
-          <div className="flex overflow-x-auto gap-6 md:gap-10 pb-10 no-scrollbar snap-x snap-mandatory scroll-smooth -mx-4 px-4 md:mx-0 md:px-0">
-            {sectorPartners.map((partner, pIdx) => (
+        return (
+          <div key={sector} className="flex flex-col gap-8">
+            {/* Sector Header */}
+            <div className="flex items-center gap-4 px-4 md:px-0">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/5 border border-blue-500/20 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(37,99,235,0.1)]">
+                <Briefcase className="text-blue-500 w-6 h-6" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[9px] font-black text-blue-500/60 uppercase tracking-[0.4em] mb-0.5">Classification</span>
+                <h3 className="text-xl md:text-3xl font-black text-white uppercase tracking-tight leading-none">
+                  {sector}
+                </h3>
+              </div>
+              <div className="h-px flex-1 bg-gradient-to-r from-blue-500/20 to-transparent ml-4 mt-3"></div>
+            </div>
+
+            {/* Partner Container */}
+            <div className="relative w-full overflow-hidden py-4">
+              {/* Gradient Overlays - only for marquee */}
+              {isMarquee && (
+                <>
+                  <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+                  <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+                </>
+              )}
+
               <motion.div
-                key={partner._id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: pIdx * 0.05 }}
-                whileHover={{ y: -10, scale: 1.05 }}
-                className="snap-start shrink-0 w-[120px] sm:w-[160px] md:w-[200px] aspect-square bg-white rounded-3xl p-5 md:p-8 flex items-center justify-center transition-all duration-700 shadow-[0_15px_35px_-10px_rgba(255,255,255,0.05)] hover:shadow-[0_30px_70px_-15px_rgba(255,255,255,0.15)] overflow-hidden cursor-pointer group"
+                className={`flex gap-6 md:gap-10 ${isMarquee ? 'w-fit' : 'px-4 md:px-0'}`}
+                style={isMarquee ? { willChange: "transform" } : {}}
+                animate={isMarquee ? {
+                  x: ["0%", "-50%"],
+                } : {}}
+                transition={isMarquee ? {
+                  duration: Math.max(sectorPartners.length * 7, 30), // Slightly slower for better visual stability
+                  repeat: Infinity,
+                  ease: "linear",
+                } : {}}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-black/[0.02] to-transparent pointer-events-none"></div>
+                {/* Render items twice for marquee, once for static */}
+                {(isMarquee ? [...sectorPartners, ...sectorPartners] : sectorPartners).map((partner, pIdx) => (
+                  <motion.div
+                    key={`${partner._id}-${pIdx}`}
+                    whileHover={{ y: -10, scale: 1.05 }}
+                    className="shrink-0 w-[140px] sm:w-[180px] md:w-[220px] aspect-square bg-white rounded-3xl p-6 md:p-10 flex items-center justify-center transition-all duration-500 shadow-[0_15px_35px_-10px_rgba(255,255,255,0.05)] hover:shadow-[0_30px_70px_-15px_rgba(255,255,255,0.15)] overflow-hidden cursor-pointer group relative"
+                    style={{ transform: 'translateZ(0)' }} // Force GPU acceleration
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/[0.02] to-transparent pointer-events-none"></div>
 
-                <img
-                  src={partner.imageUrl}
-                  alt={partner.name}
-                  className="w-full h-full object-contain filter grayscale-[0.3] group-hover:grayscale-0 transition-all duration-700 scale-95 group-hover:scale-110"
-                />
+                    <img
+                      src={partner.imageUrl}
+                      alt={partner.name}
+                      className="w-full h-full object-contain filter grayscale-[0.3] group-hover:grayscale-0 transition-opacity duration-500 scale-90 group-hover:scale-105"
+                      style={{ transform: 'translateZ(0)' }}
+                    />
 
-                <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-[3px] flex flex-col items-center justify-center p-6">
-                  <div className="w-10 h-1 bg-blue-500 rounded-full mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100"></div>
-                  <span className="text-white text-xs md:text-sm font-black uppercase tracking-[0.2em] text-center leading-tight">
-                    {partner.name}
-                  </span>
-                  <span className="text-blue-500 text-[10px] font-bold uppercase tracking-widest mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                    Official Partner
-                  </span>
-                </div>
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-all duration-500 backdrop-blur-[3px] flex flex-col items-center justify-center p-6 text-center">
+                      <div className="w-10 h-1 bg-blue-500 rounded-full mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100"></div>
+                      <span className="text-white text-xs md:text-sm font-black uppercase tracking-[0.2em] leading-tight">
+                        {partner.name}
+                      </span>
+                      <span className="text-blue-500 text-[10px] font-bold uppercase tracking-widest mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                        Official Partner
+                      </span>
+                    </div>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }

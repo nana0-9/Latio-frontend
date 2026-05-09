@@ -1,18 +1,18 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
-import { Check, Globe, MessageCircle, Search, ShoppingBag, Zap, Rocket, Building2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Check, Globe, MessageCircle, Search, ShoppingBag, Zap, Rocket, Building2, ArrowRight } from 'lucide-react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 
 const FacebookIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
   </svg>
 );
 
 const TiktokIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.81-.73-3.95-1.68-.1.93-.1 1.86-.1 2.79 0 1.93-.5 3.84-1.5 5.48-1.5 2.5-4.12 4.16-7 4.39-2.88.23-5.83-.8-7.79-2.95C.13 15.93-.41 12.83.65 10c.84-2.22 2.72-3.92 4.97-4.63.1-.03.2-.06.3-.08V9.4c-.67.2-1.32.55-1.8 1.08-.76.84-1.07 1.99-.95 3.1.1 1.05.6 2.05 1.45 2.68 1.18.88 2.82.99 4.08.31 1.05-.56 1.76-1.66 1.87-2.85.08-2.61.03-5.22.04-7.83 0-1.8-.02-3.6 0-5.4 0-.1.02-.2.03-.3z"/>
+    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.81-.73-3.95-1.68-.1.93-.1 1.86-.1 2.79 0 1.93-.5 3.84-1.5 5.48-1.5 2.5-4.12 4.16-7 4.39-2.88.23-5.83-.8-7.79-2.95C.13 15.93-.41 12.83.65 10c.84-2.22 2.72-3.92 4.97-4.63.1-.03.2-.06.3-.08V9.4c-.67.2-1.32.55-1.8 1.08-.76.84-1.07 1.99-.95 3.1.1 1.05.6 2.05 1.45 2.68 1.18.88 2.82.99 4.08.31 1.05-.56 1.76-1.66 1.87-2.85.08-2.61.03-5.22.04-7.83 0-1.8-.02-3.6 0-5.4 0-.1.02-.2.03-.3z" />
   </svg>
 );
 
@@ -352,27 +352,40 @@ const pricingData = {
 
 export function Services() {
   const [activeTab, setActiveTab] = useState<keyof typeof pricingData>('fanpage');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         staggerChildren: 0.1,
         duration: 0.6
       }
     }
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.95, y: 30 },
+  const cardVariants: any = {
+    hidden: { opacity: 0, y: 50, scale: 0.9, rotateX: -10 },
     visible: { 
       opacity: 1, 
       scale: 1, 
       y: 0,
+      rotateX: 0,
       transition: { 
-        duration: 0.5
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+        mass: 1
       }
     }
   };
@@ -381,42 +394,100 @@ export function Services() {
     switch (color) {
       case 'purple':
         return {
-          border: 'border-purple-500/20 hover:border-purple-500/50',
-          bg: 'bg-purple-500/5',
-          accent: 'text-purple-400',
-          btn: 'bg-purple-600 hover:bg-purple-500',
-          glow: 'shadow-[0_0_40px_-10px_rgba(168,85,247,0.2)]',
-          popularBg: 'bg-purple-500'
+          border: 'border-purple-500/90 hover:border-purple-400',
+          bg: 'bg-purple-500/20',
+          accent: 'text-purple-300',
+          btn: 'bg-purple-600 hover:bg-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.4)]',
+          glow: 'shadow-[0_0_60px_-10px_rgba(168,85,247,0.5)]',
+          innerGlow: 'shadow-[inset_0_0_60px_rgba(168,85,247,0.3)]',
+          popularBg: 'bg-purple-600',
+          glass: 'bg-gradient-to-br from-purple-500/10 via-zinc-900/90 to-zinc-900/95'
         };
       case 'orange':
         return {
-          border: 'border-orange-500/20 hover:border-orange-500/50',
-          bg: 'bg-orange-500/5',
-          accent: 'text-orange-400',
-          btn: 'bg-orange-600 hover:bg-orange-500',
-          glow: 'shadow-[0_0_40px_-10px_rgba(249,115,22,0.2)]',
-          popularBg: 'bg-orange-500'
+          border: 'border-orange-500/95 hover:border-orange-500',
+          bg: 'bg-orange-500/20',
+          accent: 'text-orange-300',
+          btn: 'bg-orange-600 hover:bg-orange-500 shadow-[0_0_20px_rgba(249,115,22,0.4)]',
+          glow: 'shadow-[0_0_60px_-10px_rgba(249,115,22,0.5)]',
+          innerGlow: 'shadow-[inset_0_0_60px_rgba(249,115,22,0.3)]',
+          popularBg: 'bg-orange-600',
+          glass: 'bg-gradient-to-br from-orange-500/10 via-zinc-900/90 to-zinc-900/95'
         };
       default: // blue
         return {
-          border: popular ? 'border-blue-500/50' : 'border-blue-500/20 hover:border-blue-500/50',
-          bg: 'bg-blue-500/5',
-          accent: 'text-blue-400',
-          btn: 'bg-blue-600 hover:bg-blue-500',
-          glow: 'shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)]',
-          popularBg: 'bg-blue-500'
+          border: popular ? 'border-blue-400 shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'border-blue-500/50 hover:border-blue-400',
+          bg: 'bg-blue-500/20',
+          accent: 'text-blue-300',
+          btn: 'bg-blue-600 hover:bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.4)]',
+          glow: 'shadow-[0_0_60px_-10px_rgba(59,130,246,0.6)]',
+          innerGlow: 'shadow-[inset_0_0_60px_rgba(59,130,246,0.4)]',
+          popularBg: 'bg-blue-600',
+          glass: 'bg-gradient-to-br from-blue-500/10 via-zinc-900/90 to-zinc-900/95'
         };
     }
   };
 
+  const scrollToTab = (element: HTMLElement) => {
+    const container = document.getElementById('tabs-container');
+    if (!container) return;
+
+    const containerWidth = container.offsetWidth;
+    const elementOffset = element.offsetLeft;
+    const elementWidth = element.offsetWidth;
+
+    // Calculate scroll position to center the tab
+    const scrollPosition = elementOffset - (containerWidth / 2) + (elementWidth / 2);
+    container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+  };
+
   return (
-    <div className="w-full min-h-screen bg-black">
-      <Navbar />
+    <div className="w-full min-h-screen bg-black text-white selection:bg-blue-500/30 overflow-x-hidden">
+      {/* Background Decorative Glows - Animated for movement */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.4, 1],
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+            opacity: [0.1, 0.2, 0.1]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 blur-[120px] rounded-full" 
+        />
+        <motion.div 
+          animate={{ 
+            scale: [1.4, 1, 1.4],
+            x: [0, -50, 0],
+            y: [0, -30, 0],
+            opacity: [0.1, 0.2, 0.1]
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-600/10 blur-[120px] rounded-full" 
+        />
+        <motion.div 
+          animate={{ 
+            opacity: [0.05, 0.1, 0.05],
+            scale: [0.8, 1.2, 0.8]
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-blue-400/5 blur-[150px] rounded-full" 
+        />
+      </div>
+
+      <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 py-4 ${scrolled
+        ? "bg-black/90 backdrop-blur-md border-b border-white/5 shadow-2xl"
+        : "bg-transparent border-transparent"
+        }`}>
+        <div className="max-w-7xl mx-auto">
+          <Navbar />
+        </div>
+      </header>
       <section className="w-full bg-transparent py-32 px-4 sm:px-6 lg:px-8 relative z-10 antialiased overflow-hidden">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -434,21 +505,70 @@ export function Services() {
           </div>
 
           {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-4 mb-16">
-            {Object.entries(pricingData).map(([key, data]) => (
+          <div className="relative group mb-16 px-4">
+            {/* Left Arrow Overlay */}
+            <div className="absolute left-0 inset-y-0 w-24 bg-gradient-to-r from-black via-black/40 to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-4 inset-y-0 flex items-center z-20 pointer-events-none">
               <button
-                key={key}
-                onClick={() => setActiveTab(key as keyof typeof pricingData)}
-                className={`flex items-center gap-3 px-6 py-4 rounded-2xl font-black text-sm uppercase tracking-widest transition-all duration-300 border ${
-                  activeTab === key 
-                    ? 'bg-blue-600 border-blue-500 text-white shadow-[0_10px_30px_-10px_rgba(37,99,235,0.5)]' 
-                    : 'bg-white/5 border-white/10 text-slate-400 hover:bg-white/10'
-                }`}
+                onClick={() => {
+                  const el = document.getElementById('tabs-container');
+                  if (el) el.scrollBy({ left: -400, behavior: 'smooth' });
+                }}
+                className="pointer-events-auto p-3 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-blue-600 hover:scale-110 shadow-[0_0_30px_rgba(37,99,235,0.3)]"
               >
-                {data.icon}
-                {data.title}
+                <ArrowRight className="w-5 h-5 rotate-180" />
               </button>
-            ))}
+            </div>
+
+            {/* Tabs Container */}
+            <div
+              id="tabs-container"
+              className="flex overflow-x-auto no-scrollbar justify-start gap-5 pb-8 px-12 scroll-smooth"
+              style={{ willChange: 'scroll-position', WebkitOverflowScrolling: 'touch' }}
+            >
+              {Object.entries(pricingData).map(([key, data]) => {
+                const isActive = activeTab === key;
+                return (
+                  <button
+                    key={key}
+                    onClick={(e) => {
+                      setActiveTab(key as keyof typeof pricingData);
+                      scrollToTab(e.currentTarget);
+                    }}
+                    className={`relative flex items-center gap-3 px-8 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all duration-500 border shrink-0 ${isActive
+                      ? 'text-white border-blue-500/50'
+                      : 'text-slate-400 border-white/10 hover:bg-white/5 hover:border-white/20'
+                      }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute inset-0 bg-blue-600 rounded-2xl shadow-[0_15px_35px_-10px_rgba(37,99,235,0.6)]"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <span className="relative z-10 flex items-center gap-3">
+                      {data.icon}
+                      {data.title}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Right Arrow Overlay */}
+            <div className="absolute right-0 inset-y-0 w-24 bg-gradient-to-l from-black via-black/40 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-4 inset-y-0 flex items-center z-20 pointer-events-none">
+              <button
+                onClick={() => {
+                  const el = document.getElementById('tabs-container');
+                  if (el) el.scrollBy({ left: 400, behavior: 'smooth' });
+                }}
+                className="pointer-events-auto p-3 rounded-full bg-black/60 backdrop-blur-xl border border-white/10 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-blue-600 hover:scale-110 shadow-[0_0_30px_rgba(37,99,235,0.3)]"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
 
           {/* Pricing Cards */}
@@ -464,82 +584,127 @@ export function Services() {
               {pricingData[activeTab].packages.map((pkg, index) => {
                 const styles = getColorStyles(pkg.color, pkg.popular);
                 return (
-                  <motion.div 
+                  <motion.div
                     key={index}
                     variants={cardVariants}
                     whileHover={{ y: -10 }}
-                    className={`relative flex flex-col rounded-[2.5rem] p-8 transition-all duration-500 bg-black/40 backdrop-blur-xl border ${styles.border} ${pkg.popular ? styles.glow : ''}`}
+                    className={`relative flex flex-col rounded-[2.5rem] transition-all duration-500 ${styles.glass} border ${styles.border} ${pkg.popular ? styles.glow : ''} ${styles.innerGlow} group/card shadow-2xl`}
                   >
+                    {/* Popular Badge - Positioned outside overflow area */}
                     {pkg.popular && (
-                      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                        <span className={`${styles.popularBg} text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] shadow-lg`}>
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
+                        <span className={`${styles.popularBg} text-white text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] shadow-2xl whitespace-nowrap border border-white/20`}>
                           Phổ Biến Nhất
                         </span>
                       </div>
                     )}
 
-                    {/* Card Header */}
-                    <div className="mb-8 relative">
-                      <div className="flex justify-between items-start mb-4">
-                        <div className="flex flex-col">
-                          <span className={`text-xs font-black uppercase tracking-[0.2em] mb-2 ${styles.accent}`}>
-                            {pkg.name === 'BASIC' || pkg.name === 'PHỔ THÔNG' || pkg.name === 'KHỞI ĐỘNG' ? <Rocket className="inline-block mr-1 w-3 h-3" /> : null}
-                            {pkg.name === 'GROWTH' || pkg.name === 'TIÊU CHUẨN' || pkg.name === 'PHÁT TRIỂN' ? <Zap className="inline-block mr-1 w-3 h-3" /> : null}
-                            {pkg.name === 'ENTERPRISE' || pkg.name === 'NÂNG CAO' || pkg.name === 'DOANH NGHIỆP' ? <Building2 className="inline-block mr-1 w-3 h-3" /> : null}
-                            Gói {pkg.name}
-                          </span>
-                          <h3 className="text-3xl font-black text-white tracking-tighter">
-                            {pkg.price}
-                            <span className="text-sm font-bold text-slate-500 ml-2">VNĐ/Tháng</span>
-                          </h3>
+                    {/* Internal Effects Container (Overflow Protected) */}
+                    <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden pointer-events-none z-0">
+                      {/* Top Light Reflection */}
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent z-10" />
+
+                      {/* Floating Bubbles of Light */}
+                      <motion.div
+                        animate={{
+                          scale: [1, 1.2, 1],
+                          x: [0, 20, 0],
+                          y: [0, -20, 0]
+                        }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                        className={`absolute top-1/4 -left-10 w-48 h-48 bg-gradient-to-br ${styles.accent.replace('text', 'from')}/15 to-transparent blur-[60px] rounded-full`}
+                      />
+                      <motion.div
+                        animate={{
+                          scale: [1, 1.3, 1],
+                          x: [0, -30, 0],
+                          y: [0, 30, 0]
+                        }}
+                        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                        className={`absolute bottom-1/4 -right-10 w-56 h-56 bg-gradient-to-tl ${styles.accent.replace('text', 'from')}/10 to-transparent blur-[70px] rounded-full`}
+                      />
+                      <motion.div
+                        animate={{
+                          scale: [1, 1.1, 1],
+                          opacity: [0.1, 0.2, 0.1]
+                        }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r ${styles.accent.replace('text', 'from')}/5 to-transparent blur-[80px] rounded-full`}
+                      />
+
+                      {/* Corner Glow Sources */}
+                      <div className={`absolute -top-32 -right-32 w-80 h-80 bg-gradient-to-br ${styles.accent.replace('text', 'from')}/25 to-transparent blur-[80px] rounded-full pointer-events-none group-hover/card:scale-125 transition-transform duration-1000`} />
+                      <div className={`absolute -top-32 -left-32 w-80 h-80 bg-gradient-to-bl ${styles.accent.replace('text', 'from')}/20 to-transparent blur-[80px] rounded-full pointer-events-none group-hover/card:scale-110 transition-transform duration-1000 delay-100`} />
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="relative z-10 p-8 flex flex-col h-full">
+                      {/* Card Header */}
+                      <div className="mb-8 relative">
+                        <div className="flex justify-between items-start mb-4">
+                          <div className="flex flex-col">
+                            <span className={`text-xs font-black uppercase tracking-[0.2em] mb-2 ${styles.accent}`}>
+                              {pkg.name === 'BASIC' || pkg.name === 'PHỔ THÔNG' || pkg.name === 'KHỞI ĐỘNG' ? <Rocket className="inline-block mr-1 w-3 h-3" /> : null}
+                              {pkg.name === 'GROWTH' || pkg.name === 'TIÊU CHUẨN' || pkg.name === 'PHÁT TRIỂN' ? <Zap className="inline-block mr-1 w-3 h-3" /> : null}
+                              {pkg.name === 'ENTERPRISE' || pkg.name === 'NÂNG CAO' || pkg.name === 'DOANH NGHIỆP' ? <Building2 className="inline-block mr-1 w-3 h-3" /> : null}
+                              Gói {pkg.name}
+                            </span>
+                            <h3 className="text-3xl font-black text-white tracking-tighter">
+                              {pkg.price}
+                              <span className="text-sm font-bold text-slate-500 ml-2">VNĐ/Tháng</span>
+                            </h3>
+                          </div>
+                          {(pkg as any).discount && (
+                            <span className="bg-red-500/10 text-red-500 text-[10px] font-black px-2 py-1 rounded-lg border border-red-500/20">
+                              {(pkg as any).discount}
+                            </span>
+                          )}
                         </div>
-                        {(pkg as any).discount && (
-                          <span className="bg-red-500/10 text-red-500 text-[10px] font-black px-2 py-1 rounded-lg border border-red-500/20">
-                            {(pkg as any).discount}
-                          </span>
+
+                        {(pkg as any).originalPrice && (
+                          <p className="text-slate-500 text-xs line-through mb-4 font-bold">
+                            {(pkg as any).originalPrice} VNĐ/Tháng
+                          </p>
+                        )}
+
+                        <div className="p-3 rounded-xl bg-white/5 border border-white/10 mb-6">
+                          <p className="text-white/80 text-[11px] font-bold uppercase leading-relaxed tracking-wide">
+                            {pkg.target}
+                          </p>
+                        </div>
+
+                        {(pkg as any).result && (
+                          <div className={`text-[11px] font-black uppercase tracking-wider mb-4 px-3 py-2 rounded-lg bg-white/5 border-l-2 ${styles.accent.replace('text', 'border')}`}>
+                            <Check className={`inline-block mr-2 w-3 h-3 ${styles.accent}`} />
+                            {(pkg as any).result}
+                          </div>
                         )}
                       </div>
-                      
-                      {(pkg as any).originalPrice && (
-                        <p className="text-slate-500 text-xs line-through mb-4 font-bold">
-                          {(pkg as any).originalPrice} VNĐ/Tháng
-                        </p>
-                      )}
 
-                      <div className="p-3 rounded-xl bg-white/5 border border-white/10 mb-6">
-                        <p className="text-white/80 text-[11px] font-bold uppercase leading-relaxed tracking-wide">
-                          {pkg.target}
-                        </p>
+                      {/* Features */}
+                      <div className="flex-1 space-y-4 mb-10 overflow-y-auto max-h-[350px] pr-2 custom-scrollbar">
+                        {pkg.features.map((feature, fIndex) => (
+                          <div key={fIndex} className="flex items-start gap-3 group/item">
+                            <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-white/10 group-hover/item:border-white/30 transition-colors ${pkg.popular ? styles.bg : ''}`}>
+                              <Check className={`w-3 h-3 ${styles.accent}`} />
+                            </div>
+                            <span className="text-slate-300 text-xs font-medium leading-relaxed group-hover/item:text-white transition-colors">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
                       </div>
 
-                      {(pkg as any).result && (
-                        <div className={`text-[11px] font-black uppercase tracking-wider mb-4 px-3 py-2 rounded-lg bg-white/5 border-l-2 ${styles.accent.replace('text', 'border')}`}>
-                          <Check className={`inline-block mr-2 w-3 h-3 ${styles.accent}`} />
-                          {(pkg as any).result}
-                        </div>
-                      )}
+                      {/* CTA */}
+                      <a
+                        href="https://zalo.me/0899180086"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`w-full py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] text-white transition-all duration-300 shadow-xl ${styles.btn} shadow-lg hover:scale-[1.02] active:scale-95 text-center flex items-center justify-center`}
+                      >
+                        Tư vấn ngay
+                      </a>
                     </div>
-
-                    {/* Features */}
-                    <div className="flex-1 space-y-4 mb-10 overflow-y-auto max-h-[350px] pr-2 custom-scrollbar">
-                      {pkg.features.map((feature, fIndex) => (
-                        <div key={fIndex} className="flex items-start gap-3 group/item">
-                          <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 border border-white/10 group-hover/item:border-white/30 transition-colors ${pkg.popular ? styles.bg : ''}`}>
-                            <Check className={`w-3 h-3 ${styles.accent}`} />
-                          </div>
-                          <span className="text-slate-300 text-xs font-medium leading-relaxed group-hover/item:text-white transition-colors">
-                            {feature}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* CTA */}
-                    <button 
-                      className={`w-full py-5 rounded-2xl font-black text-xs uppercase tracking-[0.2em] text-white transition-all duration-300 shadow-xl ${styles.btn} shadow-lg hover:scale-[1.02] active:scale-95`}
-                    >
-                      Tư vấn ngay
-                    </button>
                   </motion.div>
                 );
               })}
@@ -561,4 +726,22 @@ export function Services() {
       <Footer />
     </div>
   );
+}
+
+// Global style to hide scrollbars for the horizontal rows
+const scrollbarHideStyle = `
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+`;
+
+// Inject style
+if (typeof document !== 'undefined') {
+  const style = document.createElement('style');
+  style.textContent = scrollbarHideStyle;
+  document.head.appendChild(style);
 }

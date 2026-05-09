@@ -10,6 +10,8 @@ import { BlogDetail } from './components/BlogDetail';
 import { Contact } from './components/Contact';
 import { Services } from './components/Services';
 import { FloatingContact } from './components/FloatingContact';
+import ScrollToTop from './components/ScrollToTop';
+import { Solutions } from './components/Solutions';
 
 function HomePage() {
   return (
@@ -25,6 +27,7 @@ function HomePage() {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
@@ -33,6 +36,7 @@ function App() {
         <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/solutions" element={<Solutions />} />
       </Routes>
       <FloatingContact />
     </Router>
