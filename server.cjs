@@ -2,12 +2,12 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-// Serve static files from the 'dist' directory
+// 1. Serve static files (css, js, images)
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Handle SPA routing: return index.html for all routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+// 2. Catch-all: for any other request, serve index.html (SPA routing)
+app.use((req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 });
 
 const PORT = process.env.PORT || 8080;
