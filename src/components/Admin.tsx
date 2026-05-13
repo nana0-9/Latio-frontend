@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Trash2, Edit2, ChevronRight, Briefcase, LayoutGrid, CheckCircle, XCircle, Users, Image as ImageIcon, FileText, Tag, User, Calendar, X, MessageSquare, Phone, Mail, Eye } from 'lucide-react';
+import { Plus, Trash2, Edit2, LayoutGrid, CheckCircle, XCircle, Users, Image as ImageIcon, FileText, Tag, User, Calendar, X, MessageSquare, Phone, Mail, Eye } from 'lucide-react';
 
 const API_BASE = 'https://latio-backend-production.up.railway.app/api';
 
