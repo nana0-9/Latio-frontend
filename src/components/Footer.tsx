@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, MessageCircle, Camera, PlaySquare, Send, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageCircle, Camera, PlaySquare, Send, ArrowRight, ShieldCheck } from 'lucide-react';
 
 export function Footer() {
   const fadeInUp = {

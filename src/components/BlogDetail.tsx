@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
-import { Calendar, User, ArrowLeft, Share2, Globe, Share, Link as LinkIcon, Loader2 } from 'lucide-react';
+import { Calendar, ArrowLeft, Globe, Share, Link as LinkIcon, Loader2 } from 'lucide-react';
 
 interface BlogPost {
   _id: string;

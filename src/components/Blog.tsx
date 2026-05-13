@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
-import { Search, ChevronRight, Calendar, User, ArrowRight, Loader2 } from 'lucide-react';
+import { Search, Calendar, User, ArrowRight, Loader2 } from 'lucide-react';
 
 interface BlogPost {
   _id: string;

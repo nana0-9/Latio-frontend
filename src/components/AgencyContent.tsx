@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
-import { CheckCircle2, ArrowRight, MessageSquare, Globe, Target, Zap, TrendingUp, BarChart3, Users, Cpu, Monitor } from 'lucide-react';
+import { CheckCircle2, ArrowRight, MessageSquare, Globe, Target, Zap, TrendingUp, BarChart3, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function AgencyContent() {
