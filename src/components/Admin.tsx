@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Trash2, Edit2, LayoutGrid, CheckCircle, XCircle, Users, Image as ImageIcon, FileText, Tag, User, Calendar, X, MessageSquare, Phone, Mail, Eye } from 'lucide-react';
+import { Plus, Trash2, Edit2, CheckCircle, XCircle, Users, Image as ImageIcon, FileText, User, Calendar, X, MessageSquare, Phone, Mail, Eye } from 'lucide-react';
 
 const API_BASE = 'https://latio-backend-production.up.railway.app/api';
 
@@ -307,7 +307,7 @@ export function Admin() {
                                         onBlur={(e) => setBlogContent(e.currentTarget.innerHTML)}
                                         dangerouslySetInnerHTML={{ __html: blogContent }}
                                         className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors min-h-[300px] max-h-[600px] overflow-y-auto prose prose-invert prose-sm"
-                                        onPaste={(e) => {
+                                        onPaste={() => {
                                             // Optional: Handle clean paste if needed, but for tables we want to keep HTML
                                         }}
                                     />

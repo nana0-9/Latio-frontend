@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
-import { Zap, Target, Cpu, Video, ArrowRight, CheckCircle2, BarChart3, Users2 } from 'lucide-react';
+import { Zap, Cpu, Video, ArrowRight, CheckCircle2, BarChart3, Users2 } from 'lucide-react';
 import { ShinyText } from './ShinyText';
 
 export function Solutions() {
