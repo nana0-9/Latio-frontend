@@ -25,9 +25,9 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormState('submitting');
-    
+
     try {
-      const response = await fetch('http://localhost:5000/api/contacts', {
+      const response = await fetch('https://latio-backend-production.up.railway.app/api/contacts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -76,13 +76,13 @@ export function Contact() {
 
   return (
     <div className="w-full flex flex-col font-sans bg-black min-h-screen text-slate-300 relative overflow-hidden">
-      
+
       {/* Background Effects */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f12_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f12_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-        
+
         <motion.div
-          animate={{ 
+          animate={{
             scale: [1, 1.2, 1],
             opacity: [0.1, 0.2, 0.1],
             x: [0, 50, 0],
@@ -91,9 +91,9 @@ export function Contact() {
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-600/20 blur-[120px] rounded-full"
         />
-        
+
         <motion.div
-          animate={{ 
+          animate={{
             scale: [1, 1.3, 1],
             opacity: [0.1, 0.15, 0.1],
             x: [0, -40, 0],
@@ -112,7 +112,7 @@ export function Contact() {
       </div>
 
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-24 py-20">
-        
+
         {/* Hero Section */}
         <div className="text-center max-w-3xl mx-auto">
           <motion.div
@@ -134,9 +134,9 @@ export function Contact() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Contact Form Section */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -144,7 +144,7 @@ export function Contact() {
           >
             <div className="bg-white/[0.03] backdrop-blur-3xl border border-white/10 p-8 md:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 blur-[80px] rounded-full pointer-events-none group-hover:bg-blue-600/10 transition-colors duration-700" />
-              
+
               <h2 className="text-3xl font-black text-white mb-10 flex items-center gap-4">
                 Gửi Lời Nhắn
                 <div className="h-px flex-1 bg-gradient-to-r from-blue-500/50 to-transparent" />
@@ -154,10 +154,10 @@ export function Contact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-400 uppercase tracking-widest ml-1">Họ và tên</label>
-                    <input 
+                    <input
                       required
                       name="name"
-                      type="text" 
+                      type="text"
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Nguyễn Văn A"
@@ -166,10 +166,10 @@ export function Contact() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-slate-400 uppercase tracking-widest ml-1">Số điện thoại</label>
-                    <input 
+                    <input
                       required
                       name="phone"
-                      type="tel" 
+                      type="tel"
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="0899 xxx xxx"
@@ -180,10 +180,10 @@ export function Contact() {
 
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-400 uppercase tracking-widest ml-1">Email</label>
-                  <input 
+                  <input
                     required
                     name="email"
-                    type="email" 
+                    type="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="email@example.com"
@@ -193,7 +193,7 @@ export function Contact() {
 
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-slate-400 uppercase tracking-widest ml-1">Nội dung tư vấn</label>
-                  <textarea 
+                  <textarea
                     required
                     name="message"
                     rows={4}
@@ -208,11 +208,10 @@ export function Contact() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={formState !== 'idle'}
-                  className={`w-full py-5 rounded-2xl font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-500 shadow-lg ${
-                    formState === 'success' 
-                    ? 'bg-green-500 text-white' 
-                    : 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white hover:shadow-[0_10px_40px_-10px_rgba(37,99,235,0.5)]'
-                  }`}
+                  className={`w-full py-5 rounded-2xl font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-500 shadow-lg ${formState === 'success'
+                      ? 'bg-green-500 text-white'
+                      : 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white hover:shadow-[0_10px_40px_-10px_rgba(37,99,235,0.5)]'
+                    }`}
                 >
                   {formState === 'idle' && (
                     <>
@@ -259,23 +258,23 @@ export function Contact() {
             </div>
 
             {/* Map Preview */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-3 rounded-[2.5rem] overflow-hidden group shadow-2xl"
             >
               <div className="relative rounded-[2rem] overflow-hidden h-[300px]">
-                <iframe 
+                <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.4145008794335!2d108.1677706!3d16.043966300000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219a785f38dcd:0xf42afe9e00149ca9!2sLATIO%20AGENCY!5e0!3m2!1sen!2s!4v1778033077263!5m2!1sen!2s"
                   className="w-full h-full border-0 grayscale invert opacity-70 group-hover:grayscale-0 group-hover:invert-0 group-hover:opacity-100 transition-all duration-700"
                   allowFullScreen
                   loading="lazy"
                 />
                 <div className="absolute bottom-6 left-6 right-6">
-                  <a 
-                    href="https://maps.app.goo.gl/9u2kZJ6r7U8E9N9U9" 
-                    target="_blank" 
+                  <a
+                    href="https://maps.app.goo.gl/9u2kZJ6r7U8E9N9U9"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-between bg-black/60 backdrop-blur-md border border-white/10 px-6 py-4 rounded-2xl group/btn overflow-hidden"
                   >
@@ -289,11 +288,11 @@ export function Contact() {
 
             {/* Social Connection */}
             <div className="flex items-center justify-center gap-6 pt-4">
-               <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-               <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.5em] whitespace-nowrap">Kết nối mạng xã hội</p>
-               <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.5em] whitespace-nowrap">Kết nối mạng xã hội</p>
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             </div>
-            
+
             <div className="flex justify-center gap-4">
               {['Facebook', 'TikTok', 'Instagram', 'Zalo'].map((platform, i) => (
                 <motion.a
@@ -310,7 +309,7 @@ export function Contact() {
         </div>
 
         {/* FAQ Preview or CTA */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

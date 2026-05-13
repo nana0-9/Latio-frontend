@@ -28,7 +28,7 @@ export function BlogDetail() {
 
   const fetchPost = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/blogs/${id}`);
+      const res = await fetch(`https://latio-backend-production.up.railway.app/api/blogs/${id}`);
       if (!res.ok) throw new Error('Not found');
       const data = await res.json();
       setPost(data);
@@ -67,7 +67,7 @@ export function BlogDetail() {
 
       <main className="pt-32 pb-24">
         {/* Progress Bar */}
-        <motion.div 
+        <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           className="fixed top-0 left-0 right-0 h-1 bg-blue-600 origin-left z-[60]"
@@ -75,7 +75,7 @@ export function BlogDetail() {
 
         <article className="max-w-4xl mx-auto px-6">
           {/* Breadcrumb & Back */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="mb-12"
@@ -118,28 +118,28 @@ export function BlogDetail() {
           </header>
 
           {/* Banner Image */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
             className="relative aspect-video rounded-[2.5rem] overflow-hidden mb-16 border border-white/10"
           >
-            <img 
-              src={post.imageUrl} 
-              alt={post.title} 
+            <img
+              src={post.imageUrl}
+              alt={post.title}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
           </motion.div>
 
           {/* Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
             className="prose prose-invert prose-blue max-w-none blog-content"
           >
-            <div 
+            <div
               className="text-slate-300 text-lg md:text-xl leading-[1.8] font-medium break-words"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />

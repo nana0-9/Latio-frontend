@@ -30,7 +30,7 @@ export function Blog() {
 
   const fetchPosts = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/blogs');
+      const res = await fetch('https://latio-backend-production.up.railway.app/api/blogs');
       const data = await res.json();
       setPosts(data);
     } catch (error) {
@@ -42,8 +42,8 @@ export function Blog() {
 
   const filteredPosts = posts.filter(post => {
     const matchesCategory = selectedCategory === "Tất cả" || post.category === selectedCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -66,26 +66,26 @@ export function Blog() {
                 <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-500">Knowledge Base</span>
               </div>
-              
+
               <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tighter uppercase leading-[0.9]">
                 Latio <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Blog</span>
               </h1>
-              
+
               <p className="max-w-2xl mx-auto text-slate-400 text-lg md:text-xl font-medium leading-relaxed mb-12">
                 Chia sẻ kiến thức Marketing thực chiến, xu hướng AI 2024 và những giải pháp tăng trưởng đột phá cho doanh nghiệp.
               </p>
             </motion.div>
 
             {/* Search Bar */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
               className="max-w-xl mx-auto relative group"
             >
               <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-blue-500 transition-colors w-5 h-5" />
-              <input 
-                type="text" 
+              <input
+                type="text"
                 placeholder="Tìm kiếm bài viết..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -102,11 +102,10 @@ export function Blog() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-6 py-2.5 rounded-xl text-sm font-bold uppercase tracking-widest transition-all duration-300 ${
-                  selectedCategory === cat 
-                  ? "bg-blue-600 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] scale-105" 
-                  : "bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white"
-                }`}
+                className={`px-6 py-2.5 rounded-xl text-sm font-bold uppercase tracking-widest transition-all duration-300 ${selectedCategory === cat
+                    ? "bg-blue-600 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] scale-105"
+                    : "bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white"
+                  }`}
               >
                 {cat}
               </button>
@@ -136,8 +135,8 @@ export function Blog() {
                   >
                     {/* Image Container */}
                     <div className="relative aspect-[16/10] overflow-hidden">
-                      <img 
-                        src={post.imageUrl} 
+                      <img
+                        src={post.imageUrl}
                         alt={post.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
@@ -166,7 +165,7 @@ export function Blog() {
                       <h3 className="text-xl md:text-2xl font-black text-white mb-4 leading-tight group-hover:text-blue-500 transition-colors duration-300">
                         {post.title}
                       </h3>
-                      
+
                       <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-8 flex-1 line-clamp-2">
                         {post.excerpt}
                       </p>
@@ -187,8 +186,8 @@ export function Blog() {
           {!loading && filteredPosts.length === 0 && (
             <div className="py-20 text-center">
               <p className="text-slate-500 text-xl font-medium">Không tìm thấy bài viết nào phù hợp.</p>
-              <button 
-                onClick={() => {setSelectedCategory("Tất cả"); setSearchQuery("");}}
+              <button
+                onClick={() => { setSelectedCategory("Tất cả"); setSearchQuery(""); }}
                 className="mt-6 text-blue-500 font-bold uppercase tracking-widest hover:underline"
               >
                 Xem tất cả bài viết
@@ -212,10 +211,10 @@ export function Blog() {
                   Chúng tôi gửi bản tin 2 lần mỗi tuần về các xu hướng Marketing và AI mới nhất. Không spam, hứa danh dự!
                 </p>
               </div>
-              
+
               <div className="w-full max-w-md flex flex-col sm:flex-row gap-4">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   placeholder="Email của bạn..."
                   className="flex-1 bg-white/20 border border-white/30 rounded-2xl px-6 py-4 text-white placeholder:text-white/60 focus:outline-none focus:bg-white/30 transition-all backdrop-blur-md"
                 />

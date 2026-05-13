@@ -75,8 +75,8 @@ export function About() {
 
       {/* NAVBAR - Dynamic Scroll State */}
       <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 py-4 ${scrolled
-          ? "bg-black/90 backdrop-blur-md border-b border-white/5 shadow-2xl"
-          : "bg-transparent border-transparent"
+        ? "bg-black/90 backdrop-blur-md border-b border-white/5 shadow-2xl"
+        : "bg-transparent border-transparent"
         }`}>
         <div className="max-w-7xl mx-auto">
           <Navbar />
@@ -364,7 +364,7 @@ function PartnerGrid() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/partners')
+    fetch('https://latio-backend-production.up.railway.app/api/partners')
       .then(res => res.json())
       .then(data => {
         setPartners(data);

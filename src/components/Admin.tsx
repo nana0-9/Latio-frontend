@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Trash2, Edit2, ChevronRight, Briefcase, LayoutGrid, CheckCircle, XCircle, Users, Image as ImageIcon, FileText, Tag, User, Calendar, X, MessageSquare, Phone, Mail, Eye } from 'lucide-react';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://latio-backend-production.up.railway.app/api';
 
 interface BlogPost {
     _id: string;
@@ -75,11 +75,11 @@ export function Admin() {
                 fetch(`${API_BASE}/partners`).catch(() => ({ json: () => [] })),
                 fetch(`${API_BASE}/contacts`).catch(() => ({ json: () => [] }))
             ]);
-            
+
             const blogsData = await (blogsRes as any).json();
             const partnersData = await (partnersRes as any).json();
             const contactsData = await (contactsRes as any).json();
-            
+
             setBlogs(Array.isArray(blogsData) ? blogsData : []);
             setPartners(Array.isArray(partnersData) ? partnersData : []);
             setContacts(Array.isArray(contactsData) ? contactsData : []);
@@ -121,18 +121,18 @@ export function Admin() {
         e.preventDefault();
         const method = editingId ? 'PUT' : 'POST';
         const url = editingId ? `${API_BASE}/blogs/${editingId}` : `${API_BASE}/blogs`;
-        
+
         try {
             const res = await fetch(url, {
                 method,
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    title: blogTitle, 
-                    excerpt: blogExcerpt, 
-                    content: blogContent, 
-                    category: blogCategory, 
-                    imageUrl: blogImage, 
-                    author: blogAuthor 
+                body: JSON.stringify({
+                    title: blogTitle,
+                    excerpt: blogExcerpt,
+                    content: blogContent,
+                    category: blogCategory,
+                    imageUrl: blogImage,
+                    author: blogAuthor
                 })
             });
             if (res.ok) {
@@ -157,7 +157,7 @@ export function Admin() {
         e.preventDefault();
         const method = editingId ? 'PUT' : 'POST';
         const url = editingId ? `${API_BASE}/partners/${editingId}` : `${API_BASE}/partners`;
-        
+
         try {
             const res = await fetch(url, {
                 method,
@@ -219,21 +219,21 @@ export function Admin() {
 
                     <div className="flex bg-white/5 p-1 rounded-xl backdrop-blur-md border border-white/10 overflow-x-auto">
                         <button
-                            onClick={() => {setActiveTab('blogs'); resetBlogForm();}}
+                            onClick={() => { setActiveTab('blogs'); resetBlogForm(); }}
                             className={`flex items-center gap-2 px-6 py-2.5 rounded-lg transition-all whitespace-nowrap ${activeTab === 'blogs' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'}`}
                         >
                             <FileText size={18} />
                             <span>Blogs</span>
                         </button>
                         <button
-                            onClick={() => {setActiveTab('partners'); resetPartnerForm();}}
+                            onClick={() => { setActiveTab('partners'); resetPartnerForm(); }}
                             className={`flex items-center gap-2 px-6 py-2.5 rounded-lg transition-all whitespace-nowrap ${activeTab === 'partners' ? 'bg-orange-600 text-white' : 'text-gray-400 hover:text-white'}`}
                         >
                             <Users size={18} />
                             <span>Đối tác</span>
                         </button>
                         <button
-                            onClick={() => {setActiveTab('contacts'); resetBlogForm();}}
+                            onClick={() => { setActiveTab('contacts'); resetBlogForm(); }}
                             className={`flex items-center gap-2 px-6 py-2.5 rounded-lg transition-all whitespace-nowrap ${activeTab === 'contacts' ? 'bg-cyan-600 text-white' : 'text-gray-400 hover:text-white'}`}
                         >
                             <MessageSquare size={18} />
@@ -265,8 +265,8 @@ export function Admin() {
                                 ) : (
                                     <>
                                         <Plus size={20} className={activeTab === 'blogs' ? 'text-blue-400' : 'text-orange-400'} />
-                                        {activeTab === 'blogs' 
-                                            ? (editingId ? 'Sửa Bài Viết' : 'Viết Bài Mới') 
+                                        {activeTab === 'blogs'
+                                            ? (editingId ? 'Sửa Bài Viết' : 'Viết Bài Mới')
                                             : (editingId ? 'Sửa Đối Tác' : 'Thêm Đối Tác')}
                                     </>
                                 )}
@@ -302,7 +302,7 @@ export function Admin() {
                                 </div>
                                 <div>
                                     <label className="block text-sm text-gray-400 mb-1">Nội dung chi tiết (Có thể Paste bảng, ảnh vào đây)</label>
-                                    <div 
+                                    <div
                                         contentEditable
                                         onBlur={(e) => setBlogContent(e.currentTarget.innerHTML)}
                                         dangerouslySetInnerHTML={{ __html: blogContent }}
@@ -376,9 +376,9 @@ export function Admin() {
                                             </div>
                                         ) : (
                                             contacts.map((contact) => (
-                                                <motion.div 
-                                                    key={contact._id} 
-                                                    layout 
+                                                <motion.div
+                                                    key={contact._id}
+                                                    layout
                                                     className={`bg-white/5 p-6 rounded-2xl border transition-all ${contact.status === 'new' ? 'border-cyan-500/50 bg-cyan-500/5 shadow-[0_0_20px_rgba(6,182,212,0.1)]' : 'border-white/10 opacity-70 hover:opacity-100'}`}
                                                 >
                                                     <div className="flex flex-col md:flex-row justify-between gap-4 mb-4">
@@ -402,7 +402,7 @@ export function Admin() {
                                                         </div>
                                                         <div className="flex items-center gap-2 h-fit">
                                                             {contact.status === 'new' && (
-                                                                <button 
+                                                                <button
                                                                     onClick={() => markAsRead(contact._id)}
                                                                     className="flex items-center gap-2 px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl text-xs font-bold transition-all shadow-lg shadow-cyan-900/20"
                                                                 >
@@ -453,8 +453,8 @@ export function Admin() {
                                                         <p className="text-gray-400 text-xs mt-1 line-clamp-1">{item.excerpt || item.sector || 'Không có mô tả'}</p>
                                                     </div>
                                                     <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                        <button 
-                                                            onClick={() => activeTab === 'blogs' ? startEditBlog(item) : startEditPartner(item)} 
+                                                        <button
+                                                            onClick={() => activeTab === 'blogs' ? startEditBlog(item) : startEditPartner(item)}
                                                             className={`p-2 rounded-lg transition-colors ${editingId === item._id ? 'bg-blue-600 text-white' : 'hover:bg-white/10 text-gray-400 hover:text-white'}`}
                                                         >
                                                             <Edit2 size={16} />
