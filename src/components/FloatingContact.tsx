@@ -49,21 +49,19 @@ export function FloatingContact() {
   ];
 
   return (
-    <div className="fixed bottom-8 right-8 z-[9999] flex flex-col items-end gap-5">
-      {/* High-Conversion Bubble - Outstanding Neon Style */}
+    <div className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 z-[9999] flex flex-col items-end gap-3 sm:gap-5"
+      style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+    >
+      {/* Bubble - hidden on small screens to save space */}
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.8 }}
-        animate={{
-          opacity: 1,
-          y: [0, -8, 0],
-          scale: 1
-        }}
+        animate={{ opacity: 1, y: [0, -8, 0], scale: 1 }}
         transition={{
           opacity: { delay: 1, duration: 0.8 },
           y: { repeat: Infinity, duration: 3, ease: "easeInOut" },
           scale: { delay: 1, duration: 0.8 }
         }}
-        className="relative group/bubble"
+        className="hidden sm:block relative group/bubble"
       >
         {/* Ambient Glow behind bubble */}
         <div className="absolute inset-0 bg-cyan-500/20 blur-xl rounded-2xl animate-pulse" />
@@ -131,7 +129,7 @@ export function FloatingContact() {
                 delay: index * 0.5
               }
             }}
-            className={`relative flex items-center justify-center w-14 h-14 ${contact.color} text-white rounded-full shadow-2xl ${contact.shadow} transition-all duration-300 border border-white/20 z-10 overflow-hidden`}
+            className={`relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 ${contact.color} text-white rounded-full shadow-2xl ${contact.shadow} transition-all duration-300 border border-white/20 z-10 overflow-hidden`}
             style={{
               boxShadow: `0 10px 30px -5px ${contact.glow}`
             }}

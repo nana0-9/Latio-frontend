@@ -139,10 +139,12 @@ export function BlogDetail() {
             transition={{ delay: 0.3 }}
             className="prose prose-invert prose-blue max-w-none blog-content"
           >
-            <div
-              className="text-slate-300 text-lg md:text-xl leading-[1.8] font-medium break-words"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            <div style={{ overflowX: 'auto' }}>
+              <div
+                className="text-slate-300 text-base md:text-xl leading-[1.8] font-medium break-words"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
+            </div>
           </motion.div>
 
           <style>{`

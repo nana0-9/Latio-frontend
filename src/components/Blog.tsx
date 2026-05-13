@@ -67,7 +67,7 @@ export function Blog() {
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-500">Knowledge Base</span>
               </div>
 
-              <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tighter uppercase leading-[0.9]">
+              <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter uppercase leading-[0.9]">
                 Latio <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Blog</span>
               </h1>
 
@@ -96,15 +96,15 @@ export function Blog() {
         </section>
 
         {/* Category Filters */}
-        <section className="px-6 py-12 border-y border-white/5 bg-black/80 backdrop-blur-md sticky top-[92px] z-40">
-          <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-3 md:gap-6">
+        <section className="px-6 py-3 border-y border-white/5 bg-black/80 backdrop-blur-md sticky top-[72px] z-40">
+          <div className="max-w-7xl mx-auto flex flex-nowrap overflow-x-auto justify-start md:justify-center gap-3 md:gap-6 px-4 pb-2 scrollbar-hide">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-6 py-2.5 rounded-xl text-sm font-bold uppercase tracking-widest transition-all duration-300 ${selectedCategory === cat
-                    ? "bg-blue-600 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] scale-105"
-                    : "bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white"
+                className={`px-4 py-2 rounded-xl text-sm font-bold uppercase tracking-widest transition-all duration-300 whitespace-nowrap flex-shrink-0 ${selectedCategory === cat
+                  ? "bg-blue-600 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] scale-105"
+                  : "bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white"
                   }`}
               >
                 {cat}

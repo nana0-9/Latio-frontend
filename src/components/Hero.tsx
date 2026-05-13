@@ -17,14 +17,14 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-black">
+    <section className="relative w-full h-screen overflow-hidden bg-transparent">
       {/* Background Video */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="fixed inset-0 w-full h-full object-cover opacity-60 pointer-events-none"
+        className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none"
       >
         <source
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4"
@@ -43,16 +43,16 @@ export function Hero() {
       </header>
 
       {/* Content Overlay */}
-      <div className="relative z-10 max-w-16xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col pt-32 pb-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col pt-24 sm:pt-32 pb-12">
 
-        {/* Top Section */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-8 mt-12 lg:mt-12 overflow-hidden">
+        {/* Top Section - hide second paragraph on mobile */}
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 mt-4 lg:mt-12 overflow-hidden">
           <motion.p
             initial={{ opacity: 0, x: -60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="text-white/80 text-sm md:text-base max-w-md"
+            className="text-white/80 text-xs sm:text-sm md:text-base max-w-md"
           >
             Chúng tôi cung cấp các giải pháp AI đột phá, trao quyền cho doanh nghiệp với công nghệ tiên tiến để bứt phá và vươn tầm toàn cầu.
           </motion.p>
@@ -61,7 +61,7 @@ export function Hero() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="text-white/80 text-sm md:text-base lg:text-right"
+            className="hidden lg:block text-white/80 text-sm md:text-base lg:text-right"
           >
             1000+ Doanh Nghiệp Đã Triển Khai !
           </motion.p>
@@ -70,13 +70,13 @@ export function Hero() {
         {/* Main Hero Center */}
         <div className="flex-1 flex flex-col justify-center items-center mt-12 lg:mt-0 text-center relative">
           {/* Subtle Glow behind text */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-cyan-500/10 blur-[120px] rounded-full -z-10" />
+          <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-cyan-500/10 blur-[120px] rounded-full -z-10" />
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-cyan-400 text-xs md:text-sm uppercase font-black tracking-[0.5em] mb-6 relative"
+            className="text-cyan-400 text-[10px] sm:text-xs uppercase font-black tracking-[0.3em] sm:tracking-[0.5em] mb-4 sm:mb-6 relative"
           >
             <span className="relative z-10">Kỷ Nguyên Marketing AI Mới</span>
             <motion.span
@@ -91,7 +91,7 @@ export function Hero() {
               initial={{ opacity: 0, filter: 'blur(10px)', scale: 0.95 }}
               animate={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.4 }}
-              className="text-white font-normal tracking-tight leading-[0.85] text-6xl sm:text-7xl md:text-8xl lg:text-9xl m-0 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+              className="text-white font-normal tracking-tight leading-[0.85] text-4xl sm:text-6xl md:text-8xl lg:text-9xl m-0 drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]"
             >
               LATIO AI
             </motion.h1>
@@ -113,12 +113,12 @@ export function Hero() {
           </p> */}
 
           {/* CTA Button */}
-          <div className="mt-12 lg:mt-16 flex flex-col sm:flex-row gap-4">
-            <Link to="/contact" className="group relative inline-flex items-center gap-3 bg-white text-black rounded-full px-8 md:px-10 py-4 md:py-5 font-black transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+          <div className="mt-8 sm:mt-12 lg:mt-16 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
+            <Link to="/contact" className="group relative inline-flex items-center justify-center gap-3 bg-white text-black rounded-full px-6 md:px-10 py-4 md:py-5 font-black transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
               Nhận Tư Vấn Ngay
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <button className="group relative inline-flex items-center gap-3 bg-white/5 backdrop-blur-md text-white border border-white/10 rounded-full px-8 md:px-10 py-4 md:py-5 font-black transition-all hover:bg-white/10">
+            <button className="group relative inline-flex items-center justify-center gap-3 bg-white/5 backdrop-blur-md text-white border border-white/10 rounded-full px-6 md:px-10 py-4 md:py-5 font-black transition-all hover:bg-white/10">
               Xem Kết Quả Thực Tế
             </button>
           </div>

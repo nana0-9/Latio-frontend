@@ -15,7 +15,7 @@ import { Solutions } from './components/Solutions';
 
 function HomePage() {
   return (
-    <div className="w-full min-h-screen bg-black">
+    <div className="w-full min-h-screen bg-transparent">
       <Hero />
       <AgencyContent />
       <Pricing />

@@ -17,8 +17,8 @@ export function Footer() {
         <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-cyan-600/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-8 mb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-12 lg:mb-20">
 
           {/* Column 1: Info */}
           <motion.div {...fadeInUp} className="lg:col-span-4">
@@ -123,11 +123,11 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-slate-500 text-sm font-medium">
+        <div className="pt-8 sm:pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-8">
+          <p className="text-slate-500 text-xs sm:text-sm font-medium text-center md:text-left">
             <span className="text-white font-black"></span>Công ty TNHH Truyền thông và Công nghệ LATIO.
           </p>
-          <div className="flex flex-wrap justify-center gap-8 text-xs font-black uppercase tracking-widest text-slate-400">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-xs font-black uppercase tracking-widest text-slate-400">
             <a href="#" className="hover:text-blue-400 transition-colors">Trang chủ</a>
             <a href="#" className="hover:text-blue-400 transition-colors">Facebook ADS</a>
             <a href="#" className="hover:text-blue-400 transition-colors">Chăm sóc page</a>

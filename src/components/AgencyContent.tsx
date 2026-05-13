@@ -30,12 +30,12 @@ export function AgencyContent() {
   };
 
   return (
-    <div ref={containerRef} className="w-full bg-transparent text-white font-sans overflow-hidden relative antialiased">
+    <div ref={containerRef} className="w-full bg-transparent text-white font-sans relative antialiased">
       {/* The global fixed video background from Hero is already visible behind this transparent container */}
 
       {/* SECTION 1: INTRO */}
-      <section className="max-w-7xl mx-auto px-6 py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-center">
           <motion.div
             variants={fadeInUp}
             initial="initial"
@@ -47,11 +47,11 @@ export function AgencyContent() {
               <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
               <span className="text-blue-400 font-bold text-xs uppercase tracking-[0.2em]">Sứ mệnh tối ưu doanh nghiệp</span>
             </div>
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight tracking-tighter">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-black text-white mb-6 sm:mb-8 leading-tight tracking-tighter">
               Marketing nhiều, <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Khách hàng vẫn không tăng?</span>
             </h2>
-            <p className="text-slate-200 text-xl leading-relaxed mb-12 max-w-2xl font-medium">
+            <p className="text-slate-200 text-base sm:text-xl leading-relaxed mb-8 sm:mb-12 max-w-2xl font-medium">
               Hầu hết doanh nghiệp đang lãng phí <span className="text-white font-bold">40-60% ngân sách</span> marketing vì dùng công cụ cũ. LATIO là agency đầu tiên ứng dụng AI vào toàn bộ quy trình để tối ưu từng đồng vốn đầu tư.
             </p>
             <motion.div
@@ -130,7 +130,7 @@ export function AgencyContent() {
       </section>
 
       {/* SECTION 2: COMPARISON - ASYMMETRIC */}
-      <section className="py-10 px-6 bg-white/[0.02] relative overflow-hidden">
+      <section className="py-10 px-6 bg-transparent relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div variants={fadeInUp} initial="initial" whileInView="animate" viewport={{ once: true }} className="text-center mb-24 flex flex-col items-center">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-10 uppercase tracking-tighter leading-tight">
@@ -140,9 +140,9 @@ export function AgencyContent() {
             <div className="w-32 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.5)]" />
           </motion.div>
 
-          <div className="space-y-40">
+          <div className="space-y-16 sm:space-y-24 lg:space-y-40">
             {/* Block 1 */}
-            <div className="flex flex-col lg:flex-row items-center gap-24">
+            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-24">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -150,14 +150,14 @@ export function AgencyContent() {
                 className="w-full lg:w-[55%] relative group"
               >
                 <div className="absolute inset-0 bg-blue-600 rounded-[3.5rem] rotate-3 scale-[1.02] -z-10 opacity-10 group-hover:rotate-6 transition-transform duration-700" />
-                <img src="/marketing_diagnosis_tech_1777883422869.png" className="rounded-[3.5rem] shadow-2xl border border-white/5 object-cover h-[550px] w-full" alt="Diagnosis" />
+                <img src="/marketing_diagnosis_tech_1777883422869.png" className="rounded-[2rem] sm:rounded-[3.5rem] shadow-2xl border border-white/5 object-cover h-[280px] sm:h-[400px] lg:h-[550px] w-full" alt="Diagnosis" />
               </motion.div>
               <motion.div variants={fadeInUp} initial="initial" whileInView="animate" className="w-full lg:w-[45%]">
-                <div className="w-20 h-20 rounded-3xl bg-blue-600/10 border border-blue-600/20 flex items-center justify-center mb-10">
-                  <Target className="text-blue-400 w-10 h-10" />
+                <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl bg-blue-600/10 border border-blue-600/20 flex items-center justify-center mb-6 sm:mb-10">
+                  <Target className="text-blue-400 w-7 h-7 sm:w-10 sm:h-10" />
                 </div>
-                <h3 className="text-4xl font-black text-white mb-8 leading-tight tracking-tight">Chẩn đoán đúng bệnh <br /> ngay buổi đầu</h3>
-                <p className="text-slate-300 text-xl leading-relaxed mb-10 font-medium">Bạn nhận được bản chẩn đoán funnel marketing thực tế — tìm đúng điểm rò rỉ ngân sách và tệp khách hàng tiềm năng bị bỏ lỡ. Không phải bản báo giá dịch vụ vô cảm.</p>
+                <h3 className="text-2xl sm:text-4xl font-black text-white mb-4 sm:mb-8 leading-tight tracking-tight">Chẩn đoán đúng bệnh <br /> ngay buổi đầu</h3>
+                <p className="text-slate-300 text-base sm:text-xl leading-relaxed mb-6 sm:mb-10 font-medium">Bạn nhận được bản chẩn đoán funnel marketing thực tế — tìm đúng điểm rò rỉ ngân sách và tệp khách hàng tiềm năng bị bỏ lỡ. Không phải bản báo giá dịch vụ vô cảm.</p>
                 <Link to="/contact" className="flex items-center gap-4 font-black text-blue-400 hover:text-blue-300 hover:gap-6 transition-all uppercase tracking-[0.2em] text-xs">
                   Đặt lịch chẩn đoán miễn phí <ArrowRight className="w-5 h-5" />
                 </Link>
@@ -165,7 +165,7 @@ export function AgencyContent() {
             </div>
 
             {/* Block 2 - Reverse */}
-            <div className="flex flex-col lg:flex-row-reverse items-center gap-24">
+            <div className="flex flex-col lg:flex-row-reverse items-center gap-10 lg:gap-24">
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -173,14 +173,14 @@ export function AgencyContent() {
                 className="w-full lg:w-[55%] relative group"
               >
                 <div className="absolute inset-0 bg-cyan-600 rounded-[3.5rem] -rotate-3 scale-[1.02] -z-10 opacity-10 group-hover:-rotate-6 transition-transform duration-700" />
-                <img src="/customer_journey_map_3d_1777883447042.png" className="rounded-[3.5rem] shadow-2xl border border-white/5 object-cover h-[550px] w-full" alt="Journey Map" />
+                <img src="/customer_journey_map_3d_1777883447042.png" className="rounded-[2rem] sm:rounded-[3.5rem] shadow-2xl border border-white/5 object-cover h-[280px] sm:h-[400px] lg:h-[550px] w-full" alt="Journey Map" />
               </motion.div>
               <motion.div variants={fadeInUp} initial="initial" whileInView="animate" className="w-full lg:w-[45%]">
-                <div className="w-20 h-20 rounded-3xl bg-cyan-600/10 border border-cyan-600/20 flex items-center justify-center mb-10">
-                  <Globe className="text-cyan-400 w-10 h-10" />
+                <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl bg-cyan-600/10 border border-cyan-600/20 flex items-center justify-center mb-6 sm:mb-10">
+                  <Globe className="text-cyan-400 w-7 h-7 sm:w-10 sm:h-10" />
                 </div>
-                <h3 className="text-4xl font-black text-white mb-8 leading-tight tracking-tight">Kế hoạch marketing <br /> theo hành trình thực tế</h3>
-                <p className="text-slate-300 text-xl leading-relaxed mb-10 font-medium">Xây dựng Customer Journey Map dựa trên data thực tế của ngành. Xác định đúng điểm chạm, đúng kênh và đúng thời điểm để tối đa hóa tỷ lệ chuyển đổi.</p>
+                <h3 className="text-2xl sm:text-4xl font-black text-white mb-4 sm:mb-8 leading-tight tracking-tight">Kế hoạch marketing <br /> theo hành trình thực tế</h3>
+                <p className="text-slate-300 text-base sm:text-xl leading-relaxed mb-6 sm:mb-10 font-medium">Xây dựng Customer Journey Map dựa trên data thực tế của ngành. Xác định đúng điểm chạm, đúng kênh và đúng thời điểm để tối đa hóa tỷ lệ chuyển đổi.</p>
                 <Link to="/contact" className="flex items-center gap-4 font-black text-cyan-400 hover:text-cyan-300 hover:gap-6 transition-all uppercase tracking-[0.2em] text-xs">
                   Xem mẫu kế hoạch <ArrowRight className="w-5 h-5" />
                 </Link>
@@ -188,7 +188,7 @@ export function AgencyContent() {
             </div>
 
             {/* Block 3 */}
-            <div className="flex flex-col lg:flex-row items-center gap-24">
+            <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-24">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -196,14 +196,14 @@ export function AgencyContent() {
                 className="w-full lg:w-[55%] relative group"
               >
                 <div className="absolute inset-0 bg-purple-600 rounded-[3.5rem] rotate-3 scale-[1.02] -z-10 opacity-10 group-hover:rotate-6 transition-transform duration-700" />
-                <img src="/marketing_audit_visualization_1777883404259.png" className="rounded-[3.5rem] shadow-2xl border border-white/5 object-cover object-top h-[550px] w-full" alt="Audit" />
+                <img src="/marketing_audit_visualization_1777883404259.png" className="rounded-[2rem] sm:rounded-[3.5rem] shadow-2xl border border-white/5 object-cover object-top h-[280px] sm:h-[400px] lg:h-[550px] w-full" alt="Audit" />
               </motion.div>
               <motion.div variants={fadeInUp} initial="initial" whileInView="animate" className="w-full lg:w-[45%]">
-                <div className="w-20 h-20 rounded-3xl bg-purple-600/10 border border-purple-600/20 flex items-center justify-center mb-10">
-                  <BarChart3 className="text-purple-400 w-10 h-10" />
+                <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl bg-purple-600/10 border border-purple-600/20 flex items-center justify-center mb-6 sm:mb-10">
+                  <BarChart3 className="text-purple-400 w-7 h-7 sm:w-10 sm:h-10" />
                 </div>
-                <h3 className="text-4xl font-black text-white mb-8 leading-tight tracking-tight">Audit toàn diện <br /> Lỗ hổng chuyển đổi</h3>
-                <p className="text-slate-300 text-xl leading-relaxed mb-10 font-medium">Chúng tôi audit từ Ad Creative, Landing Page đến tin nhắn đầu tiên. Ứng dụng AI phân tích hành vi người dùng thời gian thực để bịt mọi lỗ hổng doanh thu.</p>
+                <h3 className="text-2xl sm:text-4xl font-black text-white mb-4 sm:mb-8 leading-tight tracking-tight">Audit toàn diện <br /> Lỗ hổng chuyển đổi</h3>
+                <p className="text-slate-300 text-base sm:text-xl leading-relaxed mb-6 sm:mb-10 font-medium">Chúng tôi audit từ Ad Creative, Landing Page đến tin nhắn đầu tiên. Ứng dụng AI phân tích hành vi người dùng thời gian thực để bịt mọi lỗ hổng doanh thu.</p>
                 <Link to="/contact" className="flex items-center gap-4 font-black text-purple-400 hover:text-purple-300 hover:gap-6 transition-all uppercase tracking-[0.2em] text-xs">
                   Xem thêm giải pháp <ArrowRight className="w-5 h-5" />
                 </Link>
@@ -278,7 +278,7 @@ export function AgencyContent() {
       </section>
 
       {/* SECTION 4: 4 SOLUTIONS - DARK PREMIUM CARDS */}
-      <section className="bg-white/5 py-10 px-6 rounded-[5rem] mx-4 mb-10 relative border border-white/10 overflow-hidden">
+      <section className="bg-white/5 py-10 px-4 sm:px-6 rounded-[2rem] sm:rounded-[5rem] mx-2 sm:mx-4 mb-10 relative border border-white/10 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,_rgba(37,99,235,0.1),transparent)] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div variants={fadeInUp} initial="initial" whileInView="animate" className="text-center mb-24">
@@ -321,9 +321,9 @@ export function AgencyContent() {
 
       {/* SECTION 5: STATS - CINEMATIC DARK */}
       <section className="py-10 px-6 max-w-7xl mx-auto relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
           <motion.div variants={fadeInUp} initial="initial" whileInView="animate">
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-10 uppercase tracking-tighter leading-none">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-black text-white mb-6 sm:mb-10 uppercase tracking-tighter leading-none">
               VÌ SAO LẠI CHỌN <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">LATIO AGENCY ?</span>
             </h2>

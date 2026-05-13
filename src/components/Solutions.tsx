@@ -59,8 +59,8 @@ export function Solutions() {
   return (
     <div className="w-full min-h-screen bg-black text-white selection:bg-blue-500/30">
       <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 py-4 ${scrolled
-          ? "bg-black/90 backdrop-blur-md border-b border-white/5 shadow-2xl"
-          : "bg-transparent border-transparent"
+        ? "bg-black/90 backdrop-blur-md border-b border-white/5 shadow-2xl"
+        : "bg-transparent border-transparent"
         }`}>
         <div className="max-w-7xl mx-auto">
           <Navbar />
@@ -83,7 +83,7 @@ export function Solutions() {
               <Zap className="w-4 h-4 text-blue-400" />
               <span className="text-blue-300 text-xs font-black uppercase tracking-[0.2em]">Hệ sinh thái tăng trưởng</span>
             </motion.div>
-            <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter leading-none">
+            <h1 className="text-3xl md:text-5xl font-black mb-8 tracking-tighter leading-none">
               4 <ShinyText text="Giải Pháp" /> LATIO<br />Đang Triển Khai
             </h1>
             <p className="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto font-medium leading-relaxed">
@@ -114,7 +114,7 @@ export function Solutions() {
                   <p className="text-slate-400 text-lg leading-relaxed mb-8">
                     {item.desc}
                   </p>
-                  
+
                   <div className="space-y-4 mb-10 w-full">
                     {item.features.map((feature, fIdx) => (
                       <div key={fIdx} className="flex items-center gap-3 group">
@@ -126,7 +126,7 @@ export function Solutions() {
                     ))}
                   </div>
 
-                  <Link 
+                  <Link
                     to="/contact"
                     className="group flex items-center gap-3 px-8 py-4 bg-white text-black font-black uppercase tracking-widest text-sm rounded-2xl hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-xl shadow-white/5 active:scale-95"
                   >
@@ -162,7 +162,7 @@ export function Solutions() {
             <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
               Hãy để LATIO đồng hành cùng bạn xây dựng một tương lai số vững chắc. Liên hệ ngay để nhận bản phác thảo giải pháp miễn phí.
             </p>
-            <Link 
+            <Link
               to="/contact"
               className="inline-block px-12 py-5 bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-[0.3em] text-sm rounded-2xl transition-all duration-300 shadow-[0_20px_50px_-10px_rgba(37,99,235,0.5)] active:scale-95"
             >

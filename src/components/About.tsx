@@ -83,7 +83,7 @@ export function About() {
         </div>
       </header>
 
-      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-32 pt-32 pb-24">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-16 sm:gap-24 lg:gap-32 pt-28 sm:pt-32 pb-16 sm:pb-24">
 
         {/* HERO SECTION OF ABOUT PAGE */}
         <section className="flex flex-col lg:flex-row gap-16 items-center">
@@ -97,10 +97,10 @@ export function About() {
                 <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
                 <span className="text-xs font-bold uppercase tracking-widest text-cyan-300">Về Chúng Tôi</span>
               </div>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6 tracking-tight leading-[1.1]">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white mb-6 tracking-tight leading-[1.1]">
                 Giải Pháp<br />
                 {/* Using ShinyText for the WOW factor */}
-                <ShinyText text="Marketing" className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.1] py-1" /><br />
+                <ShinyText text="Marketing" className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.1] py-1" /><br />
                 Toàn Diện
               </h1>
               <p className="text-lg md:text-xl text-slate-400 leading-relaxed mb-12 max-w-lg">
@@ -186,9 +186,9 @@ export function About() {
           {/* Subtle separator line with glowing center */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
 
-          <div className="text-center mb-16 relative z-10">
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">Năng Lực Cốt Lõi</h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">Sở hữu đội ngũ chuyên viên sáng tạo, đa năng và giàu kinh nghiệm, chúng tôi tự tin mang đến những giải pháp đột phá nhất.</p>
+          <div className="text-center mb-10 sm:mb-16 relative z-10">
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-tight">Năng Lực Cốt Lõi</h2>
+            <p className="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto">Sở hữu đội ngũ chuyên viên sáng tạo, đa năng và giàu kinh nghiệm, chúng tôi tự tin mang đến những giải pháp đột phá nhất.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
@@ -218,11 +218,11 @@ export function About() {
         <section className="w-full pt-24 relative overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
 
-          <div className="text-center mb-20 relative z-10">
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-8 uppercase tracking-tighter leading-none">
-              Quy Trình <ShinyText text="Làm Việc" className="text-5xl md:text-7xl font-black py-1" />
+          <div className="text-center mb-12 sm:mb-20 relative z-10">
+            <h2 className="text-4xl md:text-7xl font-black text-white mb-6 sm:mb-8 uppercase tracking-tighter leading-none">
+              Quy Trình <ShinyText text="Làm Việc" className="text-4xl md:text-7xl font-black py-1" />
             </h2>
-            <p className="text-slate-400 leading-relaxed text-xl max-w-3xl mx-auto font-medium">
+            <p className="text-slate-400 leading-relaxed text-base sm:text-xl max-w-3xl mx-auto font-medium">
               Lộ trình tối ưu tăng trưởng chuyên nghiệp, minh bạch và hiệu quả tuyệt đối.
             </p>
           </div>
