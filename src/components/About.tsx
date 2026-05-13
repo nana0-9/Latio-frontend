@@ -364,7 +364,7 @@ function PartnerGrid() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://latio-backend-production.up.railway.app/api/partners')
+    fetch('https://latio-backend-production-050c.up.railway.app/api/partners')
       .then(res => res.json())
       .then(data => {
         setPartners(data);

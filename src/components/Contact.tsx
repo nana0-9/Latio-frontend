@@ -27,7 +27,7 @@ export function Contact() {
     setFormState('submitting');
 
     try {
-      const response = await fetch('https://latio-backend-production.up.railway.app/api/contacts', {
+      const response = await fetch('https://latio-backend-production-050c.up.railway.app/api/contacts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

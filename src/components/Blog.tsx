@@ -30,7 +30,7 @@ export function Blog() {
 
   const fetchPosts = async () => {
     try {
-      const res = await fetch('https://latio-backend-production.up.railway.app/api/blogs');
+      const res = await fetch('https://latio-backend-production-050c.up.railway.app/api/blogs');
       const data = await res.json();
       setPosts(data);
     } catch (error) {

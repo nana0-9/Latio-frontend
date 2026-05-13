@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Trash2, Edit2, CheckCircle, XCircle, Users, Image as ImageIcon, FileText, User, Calendar, X, MessageSquare, Phone, Mail, Eye } from 'lucide-react';
 
-const API_BASE = 'https://latio-backend-production.up.railway.app/api';
+const API_BASE = 'https://latio-backend-production-050c.up.railway.app/api';
 
 interface BlogPost {
     _id: string;
