@@ -58,8 +58,8 @@ export function Pricing() {
             <div
               key={index}
               className={`relative rounded-3xl p-8 transition-transform hover:-translate-y-2 ${pkg.popular
-                  ? 'bg-gradient-to-b from-gray-900 to-black border-2 border-[#64CEFB]/50 shadow-[0_0_40px_-10px_rgba(100,206,251,0.3)]'
-                  : 'bg-black border border-gray-800'
+                ? 'bg-gradient-to-b from-gray-900 to-black border-2 border-[#64CEFB]/50 shadow-[0_0_40px_-10px_rgba(100,206,251,0.3)]'
+                : 'bg-black border border-gray-800'
                 }`}
             >
               {pkg.popular && (
@@ -88,14 +88,17 @@ export function Pricing() {
                 ))}
               </div>
 
-              <button
-                className={`w-full py-4 rounded-full font-medium transition-colors ${pkg.popular
-                    ? 'bg-[#64CEFB] text-black hover:bg-[#64CEFB]/90'
-                    : 'bg-white/10 text-white hover:bg-white/20'
+              <a
+                href="https://zalo.me/0899180086"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-full py-4 rounded-full font-medium transition-colors text-center block ${pkg.popular
+                  ? 'bg-[#64CEFB] text-black hover:bg-[#64CEFB]/90'
+                  : 'bg-white/10 text-white hover:bg-white/20'
                   }`}
               >
                 Chọn Gói Này
-              </button>
+              </a>
             </div>
           ))}
         </div>
