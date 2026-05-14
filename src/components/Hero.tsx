@@ -19,7 +19,7 @@ export function Hero() {
   return (
     <section className="relative w-full h-screen overflow-hidden bg-transparent">
       {/* Background Video */}
-      <video
+      {/* <video
         autoPlay
         loop
         muted
@@ -30,7 +30,7 @@ export function Hero() {
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_105406_16f4600d-7a92-4292-b96e-b19156c7830a.mp4"
           type="video/mp4"
         />
-      </video>
+      </video> */}
 
       {/* Fixed Navigation with Scroll State */}
       <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 py-4 ${scrolled
